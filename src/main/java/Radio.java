@@ -55,9 +55,4 @@ public class Radio {
         this.currentVolume = currentVolume;
     }
 
-    public void decreaseVolume() {  // Уменьшение громкости
-        if (currentVolume > 0) {
-            currentVolume = currentVolume - 1;
-        }
-    }
 }
