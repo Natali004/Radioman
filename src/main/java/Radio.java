@@ -1,68 +1,58 @@
 public class Radio {
-    private int currentRadioStation;
+    private int currentStation;
     private int currentVolume;
+    private int maxStation;
 
-    public int getCurrentRadioStation() {
-        return currentRadioStation;
+    public Radio() {
+        maxStation = 9;
+    }
+
+    public Radio(int stationsCount) {
+        maxStation = stationsCount - 1;
+    }
+
+    public void nextStation() {
+        if (currentStation != maxStation) {
+            currentStation++;
+        } else {
+            currentStation = 0;
+        }
+    }
+
+    public void prevStation() {
+        if (currentStation != 0) {
+            currentStation--;
+        } else {
+            currentStation = maxStation;
+        }
+    }
+
+    public int getCurrentStation() {
+        return currentStation;
+    }
+
+    public void setCurrentStation(int currentStation) {
+        if (currentStation < 0) {
+            return;
+        }
+        if (currentStation > maxStation) {
+            return;
+        }
+        this.currentStation = currentStation;
     }
 
     public int getCurrentVolume() {
         return currentVolume;
     }
 
-    public void setCurrentRadioStation(int currentRadioStation) {
-        if (currentRadioStation < 0) {
+    public void setCurrentVolume(int currentVolume) {
+        if (currentVolume < 0) {
             return;
         }
-        if (currentRadioStation > 9) {
+        if (currentVolume > 100) {
             return;
         }
-
-        this.currentRadioStation = currentRadioStation;
-    }
-
-    public void nextRadioStation() {
-
-        if (currentRadioStation != 9) {
-            currentRadioStation++;
-        } else {
-            currentRadioStation = 0;
-        }
-
-
-    }
-
-
-    public void stepBackRadioStation() {
-
-        if (currentRadioStation != 0) {
-            currentRadioStation--;
-        } else {
-            currentRadioStation = 9;
-        }
-    }
-
-    public void setCurrentVolume(int newCurrentVolume) {
-        if (newCurrentVolume < 0) {
-            return;
-        }
-        if (newCurrentVolume > 10) {
-            return;
-        }
-        currentVolume = newCurrentVolume;
-
-    }
-
-    public void increaseVolume() {
-        if (currentVolume < 10) {
-            currentVolume++;
-        }
-    }
-
-    public void reduceVolume() {
-        if (currentVolume > 0) {
-            currentVolume--;
-        }
+        this.currentVolume = currentVolume;
     }
 
 }
